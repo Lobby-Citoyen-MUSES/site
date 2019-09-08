@@ -52,7 +52,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#/profile">
+                          <a href="/comite-scientifique">
                             <i class="material-icons">group_add</i>
                             <p>Conseil scientifique</p>
                           </a>

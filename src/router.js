@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Board from "./views/Board.vue";
+import Committee from "./views/Committee.vue";
 import Publications from "./views/Publications.vue";
 import Publication from "./views/Publication.vue";
 import Editorial from "./views/Editorial.vue";
@@ -26,6 +27,15 @@ export default new Router({
       path: "/conseil-administration",
       name: "board",
       components: { default: Board, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/comite-scientifique",
+      name: "committee",
+      components: { default: Committee, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100 },
         footer: { backgroundColor: "black" }
