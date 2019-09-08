@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Board from "./views/Board.vue";
 import Publications from "./views/Publications.vue";
 import Publication from "./views/Publication.vue";
+import Editorial from "./views/Editorial.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 
@@ -43,6 +44,15 @@ export default new Router({
       path: "/publication/:uid",
       name: "publication",
       components: { default: Publication, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/editorial/:uid",
+      name: "editorial",
+      components: { default: Editorial, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100, background: "gradient" },
         footer: { backgroundColor: "black" }

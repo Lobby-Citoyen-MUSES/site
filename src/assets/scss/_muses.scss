@@ -1,7 +1,19 @@
 .header-filter:after {
-    background: rgba(255, 28, 70, .77);
+    // background: rgba(255, 28, 70, .77);
+
+    // background: rgba(255, 228, 140, 0.932);
     background: linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
-    background: -webkit-linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
+    // background: -webkit-linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
+
+
+    // background: linear-gradient(25deg, rgba(255, 28, 70, .77), rgba(255, 228, 140, .88));
+
+    // background: linear-gradient(-160deg, rgba(198, 255, 221, .88), rgba(251, 215, 134, .88), rgba(247, 121, 125, .88));
+
+    // background: linear-gradient(20deg, rgba(168, 255, 120, .72), rgba(120, 255, 214, .72));
+
+    // background: linear-gradient(20deg, rgba(67, 198, 172, .82), rgba(248, 255, 174, .72));
+
 }
 
 .section-dark {
@@ -55,6 +67,40 @@
 }
 
 .board {
+
+    h1,
+    h2 {
+        padding: 70px 0 35px 0;
+        font-variant: small-caps
+    }
+
+    h1 {
+        font-size: 2.0rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    .introduction {
+        font-size: 1.1rem;
+        line-height: 28px;
+        text-align: justify
+    }
+
+    .person {
+        display: flex;
+
+        .md-card {
+            flex-direction: column;
+            display: flex;
+
+            .md-card-content {
+                flex: 1 0 auto;
+            }
+        }
+    }
+
     .portrait {
         img {
             filter: grayscale(100%);
@@ -73,17 +119,21 @@
         transition: 0.5s;
         animation-timing-function: ease-in-out;
 
-        &:hover {
+        &:hover,
+        &:focus {
             filter: blur(12px) grayscale(0%);
         }
     }
+
 }
 
 .publications {
     .header-filter:after {
         background: rgba(255, 28, 70, .77);
-        background: linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
-        background: -webkit-linear-gradient(110deg, rgba(255, 28, 70, .88), rgba(212, 0, 255, .77));
+        background: linear-gradient(-160deg, rgba(198, 255, 221, .88), rgba(251, 215, 134, .88), rgba(247, 121, 125, .88));
+
+        // background: linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
+        // background: -webkit-linear-gradient(110deg, rgba(255, 28, 70, .88), rgba(212, 0, 255, .77));
     }
 
     .editorial {
@@ -142,7 +192,7 @@
             .card-title {
                 color: #fff !important;
                 margin-top: 10px;
-                font-weight: 500;
+                font-weight: 400;
                 font-variant: small-caps;
             }
 
@@ -167,7 +217,7 @@
         }
 
         .card-description {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 28px;
         }
@@ -175,7 +225,7 @@
 
     .highlight {
         .card-description {
-            font-size: 1.0rem;
+            font-size: 1rem;
         }
     }
 }

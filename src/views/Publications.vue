@@ -24,11 +24,11 @@
     <div class="main">
       <div class="section">
         <div class="container">
-          <div class="md-layout" style="flex-wrap:wrap">
+          <div class="md-layout">
 
             <div
               v-if="editorial"
-              class="editorial md-layout-item md-size-33 md-small-size-100"
+              class="editorial md-layout-item md-large-size-35 md-small-size-100"
             >
               <div
                 class="md-card md-card-background editorial md-theme-default"
@@ -56,7 +56,7 @@
               </div>
             </div>
 
-            <div class="md-layout-item md-size-77 md-small-size-100" style="display:flex">
+            <div class="md-layout-item md-size-65 md-small-size-100" style="display:flex">
               <div
                 v-if="focus"
                 class="focus md-card md-card-background md-theme-default"

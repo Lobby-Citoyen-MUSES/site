@@ -31,7 +31,7 @@
 
 <script>
 export default {
-    name: 'Publications',
+    name: 'Publication',
     props: {
         header: {
           type: String,
