@@ -11,7 +11,7 @@
         }
     }
 
-    .readability {
+    .readability, .readable {
       text-align: justify;
     }
 }
@@ -398,8 +398,8 @@
   }
 
   .main-raised {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .md-tabs-navigation {
@@ -471,7 +471,7 @@
     font-weight: 400;
   }
 
-  .readability {
+  .readability .readable {
     text-align: left;
     hyphens: auto;
     //white-space: pre-line;

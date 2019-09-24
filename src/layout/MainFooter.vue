@@ -8,23 +8,18 @@
       <nav>
         <ul>
           <li>
-            <a href="">
+            <a href="https://twitter.com/MusesCitoyen">
               Twitter
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="https://www.facebook.com/MusesCitoyen/">
               Facebook
             </a>
           </li>
           <li>
             <a href="">
-              Instagram
-            </a>
-          </li>
-          <li>
-            <a href="">
-              Status
+              Statuts
             </a>
           </li>
         </ul>

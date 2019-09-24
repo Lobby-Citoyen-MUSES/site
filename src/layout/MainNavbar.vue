@@ -41,32 +41,32 @@
                         class="md-button md-button-link md-white md-simple dropdown-toggle"
                         data-toggle="dropdown"
                       >
-                        <i class="material-icons">device_hub</i>
+                        <i class="material-icons">account_balance</i>
                         <p>Qui sommes-nous ?</p>
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
+                          <a href="/le-mot-du-president">
+                            <i class="material-icons">format_quote</i>
+                            <p>Le mot du Président</p>
+                          </a>
+                        </li>
+                         <li>
+                          <a href="/methode-et-valeurs">
+                            <i class="material-icons">emoji_objects</i>
+                            <p>Notre approche</p>
+                          </a>
+                        </li>
+                        <li>
                           <a href="/conseil-administration">
-                            <i class="material-icons">domain</i>
+                            <i class="material-icons">how_to_reg</i>
                             <p>Conseil d'administration</p>
                           </a>
                         </li>
                         <li>
                           <a href="/comite-scientifique">
-                            <i class="material-icons">group_add</i>
-                            <p>Conseil scientifique</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/profile">
-                            <i class="material-icons">group_add</i>
-                            <p>La méthode MUSES</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/profile">
-                            <i class="material-icons">group_add</i>
-                            <p>Nos Valeurs</p>
+                            <i class="material-icons">school</i>
+                            <p>Comité scientifique</p>
                           </a>
                         </li>
                       </ul>
@@ -76,7 +76,7 @@
               </li>
 
               <li class="md-list-item">
-                <a href="/publications" class="md-list-item-router md-list-item-container md-button-clean">
+                <a href="/plaidoyers" class="md-list-item-router md-list-item-container md-button-clean">
                   <div class="md-list-item-content">
                       <md-button
                         slot="title"
@@ -84,19 +84,51 @@
                         data-toggle="dropdown"
                       >
                         <i class="material-icons">library_books</i>
-                        <p>Publications</p>
+                        <p>Nos plaidoyers</p>
                       </md-button>
                   </div>
                 </a>
               </li>
 
-              <md-list-item
-                href="https://twitter.com/MusesCitoyen"
-                target="_blank"
-              >
-                <i class="material-icons">thumb_up</i>
-                <p>Nous rejoindre</p>
-              </md-list-item>
+              <li class="md-list-item">
+                <a
+                  href="javascript:void(0)"
+                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                >
+                  <div class="md-list-item-content">
+                    <drop-down direction="down">
+                      <md-button
+                        slot="title"
+                        class="md-button md-button-link md-white md-simple dropdown-toggle"
+                        data-toggle="dropdown"
+                      >
+                        <i class="material-icons">favorite</i>
+                        <p>Nous soutenir</p>
+                      </md-button>
+                      <ul class="dropdown-menu dropdown-with-icons">
+                        <li>
+                          <a href="/engagement/citoyen">
+                            <i class="material-icons">people</i>
+                            <p>Citoyen</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/engagement/entreprise">
+                            <i class="material-icons">domain</i>
+                            <p>Entreprise</p>
+                          </a>
+                        </li>
+                        <!-- <li>
+                          <a href="/don">
+                            <i class="material-icons">stars</i>
+                            <p>Don</p>
+                          </a>
+                        </li> -->
+                      </ul>
+                    </drop-down>
+                  </div>
+                </a>
+              </li>
 
               
 
@@ -112,24 +144,13 @@
               </md-list-item>
 
               <md-list-item
-                href="https://twitter.com/MusesCitoyen"
+                href="https://www.facebook.com/MusesCitoyen/"
                 target="_blank"
               >
                 <i class="fab fa-facebook"></i>
                 <p class="hidden-lg">Facebook</p>
                 <md-tooltip md-direction="bottom"
                   >Suivez nous sur Facebook</md-tooltip
-                >
-              </md-list-item>
-
-              <md-list-item
-                href="https://twitter.com/MusesCitoyen"
-                target="_blank"
-              >
-                <i class="fab fa-youtube"></i>
-                <p class="hidden-lg">YouTube</p>
-                <md-tooltip md-direction="bottom"
-                  >Suivez nous sur YouTube  </md-tooltip
                 >
               </md-list-item>
             </md-list>

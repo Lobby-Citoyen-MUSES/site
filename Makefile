@@ -5,3 +5,6 @@ up:
 
 build:
 	docker run -it --rm -v `pwd`:/var/app -w /var/app node npm run build
+
+deploy:
+	aws s3 sync dist/ s3://muses-lobby-citoyen.org

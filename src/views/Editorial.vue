@@ -10,7 +10,6 @@
             <div class="md-layout-item md-large-size-60 md-xsmall-size-100" style="display: flex; flex-direction: column;">  
               <h1 class="title text-left" style="font-variant:small-caps; flex: 1 0 auto"><span style="font-size: 5rem; position:relative; top: 20px;">“</span>{{ editorial.title }}<span style="font-size: 5rem; position:relative; top: 20px;">”</span></h1>
               <h5 class="text-right">L'édito <span class="md-small-hide">du {{ editorial.date }}<br/></span>de {{ editorial.author.fullname }}</h5>
-              <!-- <h6 class="text-right"><i class="fa fa-clock"></i>&nbsp;Temps de lecture&nbsp;: {{ editorial.reading_time }} minutes</h6> -->
             </div>
 
             <div class="md-layout-item md-large-size-20 md-xsmall-size-100">
@@ -36,7 +35,7 @@ export default {
     props: {
         header: {
           type: String,
-          default: require("@/assets/img/france.jpg")
+          default: require("@/assets/img/lobby-citoyen-muses.jpg")
         },
     },
     data () {

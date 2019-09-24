@@ -1,30 +1,41 @@
+.muses-purple {
+    color: $muses-purple;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+.readable {
+    font-size: 1.2rem;
+}
+
 .header-filter:after {
-    // background: rgba(255, 28, 70, .77);
-
-    // background: rgba(255, 228, 140, 0.932);
-    background: linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
-    // background: -webkit-linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
-
-
-    // background: linear-gradient(25deg, rgba(255, 28, 70, .77), rgba(255, 228, 140, .88));
-
-    // background: linear-gradient(-160deg, rgba(198, 255, 221, .88), rgba(251, 215, 134, .88), rgba(247, 121, 125, .88));
-
-    // background: linear-gradient(20deg, rgba(168, 255, 120, .72), rgba(120, 255, 214, .72));
-
-    // background: linear-gradient(20deg, rgba(67, 198, 172, .82), rgba(248, 255, 174, .72));
-
+    background: $muses-gradient-filter;
+    background: -webkit-linear-gradient(55deg, rgba(255, 28, 70, .70), rgba(255, 28, 70, .45), rgba(212, 0, 255, .30), rgba(212, 0, 255, 0) 70%);
 }
 
-.section-dark {
-    color: white;
-    background: rgba(117, 22, 121, .88);
-    background: linear-gradient(45deg, rgba(43, 6, 60, .82), rgba(123, 23, 69, .82));
-    background: -webkit-linear-gradient(135deg, rgba(43, 6, 60, .82), rgba(123, 23, 69, .82));
-}
+.home {
+    .header-filter {
+        background-position-y: bottom;
+    }
 
-.section-dark .title {
-    color: white;
+    .section {
+        padding: 25px 0;
+    }
+
+    .section-dark {
+        color: white;
+        background: $muses-gradient;
+
+        .title {
+            color: white;
+        }
+    }
+
+    .info {
+        padding: 0;
+    }
 }
 
 .md-card img {
@@ -66,25 +77,55 @@
     opacity: 0;
 }
 
+.about {
+    .header-filter:after {
+        //background: linear-gradient(55deg, rgba(255, 28, 70, .70), rgba(255, 28, 70, .45), rgba(212, 0, 255, .30), rgba(212, 0, 255, 0) 70%);
+        background: $muses-gradient
+    }
+}
+
 .board {
+    .header-filter:after {
+        //background: linear-gradient(55deg, rgba(255, 28, 70, .70), rgba(255, 28, 70, .45), rgba(212, 0, 255, .30), rgba(212, 0, 255, 0) 70%);
+        background: $muses-gradient
+    }
+
+    .md-button .md-ripple .md-button-content .fab,
+    .fullname {
+        color: $muses-purple !important;
+    }
+
 
     h1,
     h2 {
-        padding: 70px 0 35px 0;
         font-variant: small-caps
     }
 
     h1 {
+        padding: 70px 0 35px 0;
         font-size: 2.0rem;
     }
 
     h2 {
+        padding: 0 0 35px 0;
         font-size: 1.7rem;
     }
 
+    .main {
+        .section {
+            .container {
+                background-color: rgba(255, 255, 255, .7);
+            }
+        }
+    }
+
+    .section-dark {
+        background-color: $muses-gradient;
+    }
+
     .introduction {
-        font-size: 1.1rem;
-        line-height: 28px;
+        font-size: 1.2rem;
+        line-height: 1.8;
         text-align: justify
     }
 
@@ -92,11 +133,21 @@
         display: flex;
 
         .md-card {
+            // box-shadow: none;
             flex-direction: column;
             display: flex;
 
             .md-card-content {
+                padding: 0 1.475rem;
                 flex: 1 0 auto;
+
+                .card-title {
+                    margin-top: 0;
+                }
+
+                h6 {
+                    margin-top: 0;
+                }
             }
         }
     }
@@ -127,13 +178,12 @@
 
 }
 
-.publications {
+.advocacies {
     .header-filter:after {
-        background: rgba(255, 28, 70, .77);
-        background: linear-gradient(-160deg, rgba(198, 255, 221, .88), rgba(251, 215, 134, .88), rgba(247, 121, 125, .88));
-
-        // background: linear-gradient(110deg, rgba(255, 28, 70, .77), rgba(212, 0, 255, .55));
-        // background: -webkit-linear-gradient(110deg, rgba(255, 28, 70, .88), rgba(212, 0, 255, .77));
+        background: rgba(0, 0, 0, .77);
+        // background: linear-gradient(55deg, rgba(255, 28, 70, .88), rgba(243, 177, 131, .70));
+        // background: linear-gradient(55deg, rgba(255, 28, 70, .99), rgba(212, 0, 255, .66));
+        // background: -webkit-linear-gradient(55deg, rgba(255, 28, 70, .77), rgba(255, 28, 70, .45), rgba(212, 0, 255, .45), rgba(212, 0, 255, .66));
     }
 
     .editorial {
@@ -167,7 +217,7 @@
             left: 0;
             top: 0;
             content: "";
-            background-color: rgba(0, 0, 0, .70);
+            background-color: rgba(0, 0, 0, .75);
             border-radius: 6px;
         }
 
@@ -227,5 +277,11 @@
         .card-description {
             font-size: 1rem;
         }
+    }
+}
+
+.advocacy {
+    li {
+        font-family: $font-family-serif;
     }
 }
