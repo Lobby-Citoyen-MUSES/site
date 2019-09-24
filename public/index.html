@@ -11,7 +11,19 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Alegreya:400,400i,700|Material+Icons" />
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <script>window.prismic = { endpoint: 'https://muses.cdn.prismic.io/api/v2' }</script>
-    <script src="https://static.cdn.prismic.io/prismic.min.js"></script>
+    <script src="https://static.cdn.prismic.io/prismic.min.js" async></script>
+    <script>
+      window._config = {
+          cognito: {
+            userPoolId: 'eu-west-1_fh3CCObaQ',
+            userPoolClientId: '5jkm8rf42et586pmmt1fimkhr8',
+            region: 'eu-west-1' 
+          },
+          api: {
+            invokeUrl: 'https://auth.muses-lobby-citoyen.org' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod',
+          }
+        };
+    </script>
   </head>
   
   <body>

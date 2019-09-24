@@ -1,25 +1,20 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper advocacy">
     <parallax class="section page-header" :style="headerStyle">
       <div class="container">
         <div class="md-layout">
-          <div
-            class="md-layout-item md-size-80 md-small-size-80 md-xsmall-size-100"
-          >
-          </div>
+          <div class="md-layout-item md-size-80 md-small-size-80 md-xsmall-size-100"></div>
         </div>
       </div>
     </parallax>
 
     <div class="main readability">
-
       <div class="section">
         <div class="container">
-
           <div  v-if="article" class="md-layout">
             <div class="md-layout-item md-size-80 md-xsmall-size-100 mx-auto">
               <h6 class="text-right"><i class="fa fa-clock"></i>&nbsp;Temps de lecture&nbsp;: {{ article.reading_time }} minutes</h6>
-              <h2 class="title text-center">{{ article.title }}</h2>
+              <h1 class="title text-center" style="font-size:2.25rem; font-variant:small-caps; margin:60px;">{{ article.title }}</h1>
               <prismic-rich-text :field="article.body[0].primary.text"/>
             </div>
           </div>
@@ -35,7 +30,7 @@ export default {
     props: {
         header: {
           type: String,
-          default: require("@/assets/img/france.jpg")
+          default: require("@/assets/img/lobby-citoyen-muses.jpg")
         },
     },
     data () {
