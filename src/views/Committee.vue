@@ -17,23 +17,6 @@
       </div>
     </div>
 
-    <modal v-if="modalMember.fullname" @close="modalHide">
-      <template slot="header">
-        <h4 class="modal-title">{{ modalMember.fullname }}</h4>
-        <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalHide">
-          <md-icon>clear</md-icon>
-        </md-button>
-      </template>
-
-      <template slot="body">
-        <prismic-rich-text :field="modalMember.body[0].primary.text" />
-      </template>
-
-      <template slot="footer">
-        <md-button class="md-danger md-simple" @click="modalHide">Fermer</md-button>
-      </template>
-    </modal>
-
     <div class="main">
       <div class="section">
         <div class="container">
@@ -45,7 +28,7 @@
             >
               <div class="md-card md-card-profile md-theme-default">
                 <div class="md-card-header md-card-header-image">
-                  <a class="portrait">
+                  <a class="portrait" :href="'/membre/' + member.uid">
                     <img v-bind:src="member.square.url" v-bind:alt="member.fullname" class="img" />
                   </a>
                   <div class="colored-shadow" :style="profileBackground(member)"></div>
@@ -135,7 +118,7 @@ export default {
         )
         .then(response => {
           response.results.forEach(document => {
-            this.members.push({ id: document.id, ...document.data });
+            this.members.push({ id: document.id, uid: document.uid, ...document.data });
           });
         });
     },
