@@ -115,16 +115,16 @@
         <div class="md-layout">
           <div class="md-layout-item md-size-60 md-small-size-100">
             <dl style="text-align: justify">
-              <dt>S’INFORMER.</dt>
+              <dt>S’INFORMER</dt>
               <dd>Recevoir une information éclairante à travers des analyses décryptant l’actualité qui s’appuient toutes sur des vérifications factuelles et des remontées de la base citoyenne. A l’heure du foisonnement des fake-news, la réalité du terrain demeure une valeur sûre.</dd>
 
-              <dl>PROPOSER.</dl>
+              <dl>PROPOSER</dl>
               <dd>Faire entendre sa voix en participant à l’élaboration des positionnements de MUSES, que ce soit en suggérant vos propres propositions sur des thèmes qui vous inspirent ou en votant pour soutenir celles que vous souhaitez voir défendues.</dd>
 
-              <dl>PARTICIPER.</dl>
+              <dl>PARTICIPER</dl>
               <dd>Agir sur les grandes orientations et vivre un espace de démocratie participative au sein du Lobby citoyen MUSES en siégeant – sur élection et tirage au sort – au Conseil d’administration et à l’Assemblée générale.</dd>
 
-              <dl>INFLUENCER.</dl>
+              <dl>INFLUENCER</dl>
               <dd>Voir ses intérêts de citoyen ou de travailleur réellement défendus à travers le rôle d’influence de MUSES auprès des entreprises, du gouvernement et du Parlement, que ce soit à travers un travail rigoureux tout le long du processus législatif ou par le biais de rendez-vous organisés en toute transparence.</dd>
             </dl>
           </div>

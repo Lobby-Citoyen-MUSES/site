@@ -10,6 +10,7 @@
       <div class="md-toolbar-section-start">
         <router-link to="/">
           <h3 class="md-title">MUSES</h3>
+          <!-- <img src="/img/muses-lobby-citoyen-logo.svg" style="display:block;width:100px;"/> -->
         </router-link>
       </div>
       <div class="md-toolbar-section-end">
