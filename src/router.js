@@ -5,6 +5,7 @@ import Inspirational from "./views/Inspirational.vue";
 import About from "./views/About.vue";
 import Board from "./views/Board.vue";
 import Committee from "./views/Committee.vue";
+import Member from "./views/Member.vue";
 import Advocacies from "./views/Advocacies.vue";
 import Advocacy from "./views/Advocacy.vue";
 import Editorial from "./views/Editorial.vue";
@@ -63,6 +64,15 @@ const router = new Router({
       components: { default: Committee, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/membre/:uid",
+      name: "member",
+      components: { default: Member, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
         footer: { backgroundColor: "black" }
       }
     },

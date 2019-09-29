@@ -31,7 +31,7 @@
             >
               <div class="md-card md-card-profile md-theme-default">
                 <div class="md-card-header md-card-header-image">
-                  <a class="portrait">
+                  <a class="portrait" :href="'/membre/' + member.uid">
                     <img v-bind:src="member.square.url" v-bind:alt="member.fullname" class="img" />
                   </a>
                   <div class="colored-shadow" :style="profileBackground(member)"></div>
@@ -196,7 +196,13 @@
 </template>
 
 <script>
+import { Modal } from "@/components";
+
 export default {
+  name: "Board",
+  components: {
+    Modal
+  },
   bodyClass: "landing-page",
   props: {
     header: {
@@ -223,31 +229,36 @@ export default {
   methods: {
     getMembers() {
       this.$prismic.client
-        .query([
-          this.$prismic.Predicates.at("document.type", "person"),
-          this.$prismic.Predicates.at("document.tags",["membre_conseil_administration"])
-        ],  { orderings: "[my.person.lastname]" })
+        .query(
+          [
+            this.$prismic.Predicates.at("document.type", "person"),
+            this.$prismic.Predicates.at("document.tags", [
+              "membre_conseil_administration"
+            ])
+          ],
+          { orderings: "[my.person.lastname]" }
+        )
         .then(response => {
           this.members = [null, null, null];
           response.results.forEach(document => {
-              switch (document.data.position.toLowerCase()) {
-                case "administrateur":
-                case "administratrice":
-                  this.members.push({ id: document.id, ...document.data });
-                  break;  
-                case "président":
-                case "présidente":
-                  this.members[0] = { id: document.id, ...document.data };
-                  break;
-                case "vice-président":
-                case "vice-présidente":
-                  this.members[1] = { id: document.id, ...document.data };
-                  break;
-                case "trésorier":
-                case "trésorière":
-                  this.members[2] = { id: document.id, ...document.data };
-                  break;
-              }
+            switch (document.data.position.toLowerCase()) {
+              case "administrateur":
+              case "administratrice":
+                this.members.push({ id: document.id, uid: document.uid, ...document.data });
+                break;
+              case "président":
+              case "présidente":
+                this.members[0] = { id: document.id, uid: document.uid, ...document.data };
+                break;
+              case "vice-président":
+              case "vice-présidente":
+                this.members[1] = { id: document.id, uid: document.uid, ...document.data };
+                break;
+              case "trésorier":
+              case "trésorière":
+                this.members[2] = { id: document.id, uid: document.uid, ...document.data };
+                break;
+            }
           });
         });
     },
@@ -262,8 +273,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;

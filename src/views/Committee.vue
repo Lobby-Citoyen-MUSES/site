@@ -8,14 +8,31 @@
           </div>
 
           <div class="md-layout-item md-large-size-80 md-medium-size-80 md-small-size-100">
-            <p
-              class="introduction"
-            > Le Comité scientifique poursuit l’objectif d’être un lieu d’échange et de confrontation d’idées entre des profils et points de vue différents afin de parvenir à des analyses stratégiques et des préconisations innovantes sur les problématiques du moment. 
-              Ce lieu de réflexion et de proposition organise ses travaux en toute indépendance et peut suggérer au Conseil d'administration des axes de travail.</p>
+            <p class="introduction">
+              Le Comité scientifique poursuit l’objectif d’être un lieu d’échange et de confrontation d’idées entre des profils et points de vue différents afin de parvenir à des analyses stratégiques et des préconisations innovantes sur les problématiques du moment.
+              Ce lieu de réflexion et de proposition organise ses travaux en toute indépendance et peut suggérer au Conseil d'administration des axes de travail.
+            </p>
           </div>
         </div>
       </div>
     </div>
+
+    <modal v-if="modalMember.fullname" @close="modalHide">
+      <template slot="header">
+        <h4 class="modal-title">{{ modalMember.fullname }}</h4>
+        <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalHide">
+          <md-icon>clear</md-icon>
+        </md-button>
+      </template>
+
+      <template slot="body">
+        <prismic-rich-text :field="modalMember.body[0].primary.text" />
+      </template>
+
+      <template slot="footer">
+        <md-button class="md-danger md-simple" @click="modalHide">Fermer</md-button>
+      </template>
+    </modal>
 
     <div class="main">
       <div class="section">
@@ -72,7 +89,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -108,10 +124,15 @@ export default {
     getMembers() {
       this.members = [];
       this.$prismic.client
-        .query([
-          this.$prismic.Predicates.at("document.type", "person"),
-          this.$prismic.Predicates.at("document.tags", ["membre_comite_scientifique"])
-        ], {orderings: "[my.person.lastname]"})
+        .query(
+          [
+            this.$prismic.Predicates.at("document.type", "person"),
+            this.$prismic.Predicates.at("document.tags", [
+              "membre_comite_scientifique"
+            ])
+          ],
+          { orderings: "[my.person.lastname]" }
+        )
         .then(response => {
           response.results.forEach(document => {
             this.members.push({ id: document.id, ...document.data });
