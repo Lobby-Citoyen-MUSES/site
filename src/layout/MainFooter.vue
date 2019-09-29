@@ -8,18 +8,18 @@
       <nav>
         <ul>
           <li>
-            <a href="https://twitter.com/MusesCitoyen">
+            <a target="_blank" href="https://twitter.com/MusesCitoyen">
               Twitter
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/MusesCitoyen/">
+            <a target="_blank" href="https://www.facebook.com/MusesCitoyen/">
               Facebook
             </a>
           </li>
           <li>
-            <a href="">
-              Statuts
+            <a target="_blank" href="mailto:contact@muses-lobby-citoyen.org">
+              Contact
             </a>
           </li>
         </ul>
