@@ -173,6 +173,13 @@
               </div>
             </div>
           </div>
+
+          <div class="md-layout-item md-small-size-100">
+            <p style="font-size:16px;text-align:center;">
+                Pour vous désabonner, contactez nous par email à <a href="mailto:contact@muses-lobby-citoyen.org">contact@muses-lobby-citoyen.org</a></br>
+                Nous traîterons votre requête sous 72H ouvrées.
+            </p>
+          </div>
         </div>
       </div>
     </div>
