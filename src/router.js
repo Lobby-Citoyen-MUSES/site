@@ -16,6 +16,7 @@ import SubscriptionFailed from "./views/SubscriptionFailed.vue";
 import Donation from "./views/Donation.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
+import Legal from "./views/Legal.vue";
 
 Vue.use(Router);
 
@@ -149,6 +150,16 @@ const router = new Router({
         footer: { backgroundColor: "black" }
       }
     },
+    {
+      path: "/mentions-legales",
+      name: "legal",
+      components: { default: Legal, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      }
+    },
+
   ],
   scrollBehavior: to => {
     if (to.hash) {

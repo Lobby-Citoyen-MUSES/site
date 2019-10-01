@@ -18,6 +18,11 @@
             </a>
           </li>
           <li>
+            <a href="/mentions-legales">
+              Statuts & Mentions légales
+            </a>
+          </li>
+          <li>
             <a target="_blank" href="mailto:contact@muses-lobby-citoyen.org">
               Contact
             </a>
