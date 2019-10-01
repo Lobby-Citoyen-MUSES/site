@@ -38,7 +38,9 @@
                 </div>
 
                 <div class="md-card-content">
-                  <h4 class="card-title fullname">{{ member.fullname }}</h4>
+                  <h4 class="card-title fullname">
+                    <a :href="'/membre/' + member.uid">{{ member.fullname }}</a>
+                  </h4>
                   <h6 class="card-category text-gray">{{ member.position }}</h6>
                   <p class="card-description">{{ member.occupation}}</p>
                 </div>
