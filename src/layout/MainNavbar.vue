@@ -47,28 +47,28 @@
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="/le-mot-du-president">
+                          <router-link to="/le-mot-du-president">
                             <i class="material-icons">format_quote</i>
                             <p>Le mot du Président</p>
-                          </a>
+                          </router-link>
                         </li>
                          <li>
-                          <a href="/methode-et-valeurs">
+                          <router-link to="/methode-et-valeurs">
                             <i class="material-icons">emoji_objects</i>
                             <p>Notre approche</p>
-                          </a>
+                          </router-link>
                         </li>
                         <li>
-                          <a href="/conseil-administration">
+                          <router-link to="/conseil-administration">
                             <i class="material-icons">how_to_reg</i>
                             <p>Conseil d'administration</p>
-                          </a>
+                          </router-link>
                         </li>
                         <li>
-                          <a href="/comite-scientifique">
+                          <router-link to="/comite-scientifique">
                             <i class="material-icons">school</i>
                             <p>Comité scientifique</p>
-                          </a>
+                          </router-link>
                         </li>
                       </ul>
                     </drop-down>
@@ -77,7 +77,7 @@
               </li>
 
               <li class="md-list-item">
-                <a href="/plaidoyers" class="md-list-item-router md-list-item-container md-button-clean">
+                <router-link to="/plaidoyers" class="md-list-item-router md-list-item-container md-button-clean">
                   <div class="md-list-item-content">
                       <md-button
                         slot="title"
@@ -88,7 +88,7 @@
                         <p>Nos plaidoyers</p>
                       </md-button>
                   </div>
-                </a>
+                </router-link>
               </li>
 
               <li class="md-list-item">
@@ -108,16 +108,16 @@
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="/engagement/citoyen">
+                          <router-link to="/engagement/citoyen">
                             <i class="material-icons">people</i>
                             <p>Citoyen</p>
-                          </a>
+                          </router-link>
                         </li>
                         <li>
-                          <a href="/engagement/entreprise">
+                          <router-link to="/engagement/entreprise">
                             <i class="material-icons">domain</i>
                             <p>Entreprise</p>
-                          </a>
+                          </router-link>
                         </li>
                         <!-- <li>
                           <a href="/don">

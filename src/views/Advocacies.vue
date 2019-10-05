@@ -13,9 +13,11 @@
               style="font-size:1.3rem; line-height: 1.6em"
             >{{ headline.summary }}</h3>
             <br />
+            <router-link :to="'/plaidoyer/' + headline.uid">
             <md-button :href="'/plaidoyer/' + headline.uid" class="md-success md-lg">
               <i class="fas fa-plus"></i> Lire la suite
             </md-button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -29,23 +31,20 @@
               v-if="editorial"
               class="editorial md-layout-item md-large-size-35 md-small-size-100"
             >
-            <a
-                      :href="'/editorial/' + editorial.uid"
-                      
-                    >
+            <router-link :to="'/editorial/' + editorial.uid">
               <div
                 class="md-card md-card-background editorial md-theme-default"
                 :style="editorialBackground(editorial)"
               >
                 <div class="md-card-content">
                   <div style="flex-grow: 1;"></div>
-                  <a class="editorial-title" :href="'/editorial/' + editorial.uid">
+                  <router-link class="editorial-title" :to="'/editorial/' + editorial.uid">
                     <h3 class="card-title">{{ editorial.title }}</h3>
-                  </a>
+                  </router-link>
 
                   <div class="card-stats text-center">
-                    <a
-                      :href="'/editorial/' + editorial.uid"
+                    <router-link
+                      :to="'/editorial/' + editorial.uid"
                       class="md-button md-white md-round md-theme-default"
                     >
                       <div class="md-ripple">
@@ -53,11 +52,11 @@
                           class="md-button-content"
                         >Lire l'édito de {{ editorial.author.fullname }}</div>
                       </div>
-                    </a>
+                    </router-link>
                   </div>
                 </div>
               </div>
-              </a>
+              </router-link>
             </div>
 
             <div class="md-layout-item md-size-65 md-small-size-100" style="display:flex">
@@ -67,16 +66,16 @@
                 :style="highlightBackground(focus)"
               >
                 <div class="md-card-content">
-                  <a :href="'/plaidoyer/' + focus.uid">
+                  <router-link :to="'/plaidoyer/' + focus.uid">
                     <h6 class="card-category">{{ focus.category }}</h6>
                     <h3 class="card-title">{{ focus.title }}</h3>
                     <p class="card-description">{{ focus.summary }}</p>
-                  </a>
+                  </router-link>
                 </div>
 
                 <div class="md-card-actions">
-                  <a
-                    :href="'/plaidoyer/' + focus.uid"
+                  <router-link
+                    :to="'/plaidoyer/' + focus.uid"
                     class="md-button md-white md-simple md-theme-default"
                   >
                     <div class="md-ripple">
@@ -84,8 +83,8 @@
                         <i class="md-icon md-icon-font md-theme-default">subject</i> Lire le plaidoyer
                       </div>
                     </div>
-                  </a>
-                  <a :href="focus.id" class="md-button md-white md-simple md-theme-default">
+                  </router-link>
+                  <router-link :to="'/plaidoyer/' + focus.uid" class="md-button md-white md-simple md-theme-default">
                     <div class="md-ripple">
                       <div class="md-button-content">
                         <i class="md-icon md-icon-font md-theme-default">watch_later</i>
@@ -95,7 +94,7 @@
                         >de lecture</span>
                       </div>
                     </div>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -106,7 +105,7 @@
               class="highlight md-layout-item md-size-50 md-small-size-100"
               style="display:flex"
             >
-              <a :href="'/plaidoyer/' + highlight.uid">
+              <router-link :to="'/plaidoyer/' + highlight.uid">
                 <div
                   class="md-card md-card-background md-theme-default"
                   :style="highlightBackground(highlight)"
@@ -118,8 +117,8 @@
                   </div>
 
                   <div class="md-card-actions">
-                    <a
-                      :href="'/plaidoyer/' + highlight.uid"
+                    <router-link
+                      :to="'/plaidoyer/' + highlight.uid"
                       class="md-button md-white md-simple md-theme-default"
                     >
                       <div class="md-ripple">
@@ -127,8 +126,8 @@
                           <i class="md-icon md-icon-font md-theme-default">subject</i> Lire le plaidoyer
                         </div>
                       </div>
-                    </a>
-                    <a :href="highlight.id" class="md-button md-white md-simple md-theme-default">
+                    </router-link>
+                    <router-link :to="'/plaidoyer/' + highlight.uid" class="md-button md-white md-simple md-theme-default">
                       <div class="md-ripple">
                         <div class="md-button-content">
                           <i class="md-icon md-icon-font md-theme-default">watch_later</i>
@@ -138,10 +137,10 @@
                           >de lecture</span>
                         </div>
                       </div>
-                    </a>
+                    </router-link>
                   </div>
                 </div>
-              </a>
+              </router-link>
             </div>
           </div>
         </div>
@@ -191,7 +190,7 @@ export default {
         backgroundSize: "cover"
       };
     },
-    getplaidoyers() {
+    getPlaidoyers() {
       this.$prismic.client
         .query(
           [
@@ -222,7 +221,6 @@ export default {
         .then(response => {
           response.results.forEach(document => {
             let author = document.data.author;
-            delete document.data.author;
 
             this.editorial = {
               id: document.id,
@@ -278,7 +276,7 @@ export default {
     }
   },
   created() {
-    this.getplaidoyers();
+    this.getPlaidoyers();
   },
   beforeRouteUpdate(to, from, next) {
     //this.getContent(to.params.uid)
