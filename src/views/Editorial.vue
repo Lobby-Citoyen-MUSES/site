@@ -50,7 +50,6 @@ export default {
             this.$prismic.client.getByUID('editorial', uid, {fetchLinks :  ['person.fullname', 'person.portrait']})
             .then((document) => {
               let author = document.data.author;
-              delete document.data.author;
 
               // let months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 
