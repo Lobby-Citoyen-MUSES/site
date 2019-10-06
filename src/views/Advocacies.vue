@@ -14,9 +14,9 @@
             >{{ headline.summary }}</h3>
             <br />
             <router-link :to="'/plaidoyer/' + headline.uid">
-            <md-button :href="'/plaidoyer/' + headline.uid" class="md-success md-lg">
-              <i class="fas fa-plus"></i> Lire la suite
-            </md-button>
+              <md-button :href="'/plaidoyer/' + headline.uid" class="md-success md-lg">
+                <i class="fas fa-plus"></i> Lire la suite
+              </md-button>
             </router-link>
           </div>
         </div>
@@ -31,31 +31,31 @@
               v-if="editorial"
               class="editorial md-layout-item md-large-size-35 md-small-size-100"
             >
-            <router-link :to="'/editorial/' + editorial.uid">
-              <div
-                class="md-card md-card-background editorial md-theme-default"
-                :style="editorialBackground(editorial)"
-              >
-                <div class="md-card-content">
-                  <div style="flex-grow: 1;"></div>
-                  <router-link class="editorial-title" :to="'/editorial/' + editorial.uid">
-                    <h3 class="card-title">{{ editorial.title }}</h3>
-                  </router-link>
-
-                  <div class="card-stats text-center">
-                    <router-link
-                      :to="'/editorial/' + editorial.uid"
-                      class="md-button md-white md-round md-theme-default"
-                    >
-                      <div class="md-ripple">
-                        <div
-                          class="md-button-content"
-                        >Lire l'édito de {{ editorial.author.fullname }}</div>
-                      </div>
+              <router-link :to="'/editorial/' + editorial.uid">
+                <div
+                  class="md-card md-card-background editorial md-theme-default"
+                  :style="editorialBackground(editorial)"
+                >
+                  <div class="md-card-content">
+                    <div style="flex-grow: 1;"></div>
+                    <router-link class="editorial-title" :to="'/editorial/' + editorial.uid">
+                      <h3 class="card-title">{{ editorial.title }}</h3>
                     </router-link>
+
+                    <div class="card-stats text-center">
+                      <router-link
+                        :to="'/editorial/' + editorial.uid"
+                        class="md-button md-white md-round md-theme-default"
+                      >
+                        <div class="md-ripple">
+                          <div
+                            class="md-button-content"
+                          >Lire l'édito de {{ editorial.author.fullname }}</div>
+                        </div>
+                      </router-link>
+                    </div>
                   </div>
                 </div>
-              </div>
               </router-link>
             </div>
 
@@ -84,7 +84,10 @@
                       </div>
                     </div>
                   </router-link>
-                  <router-link :to="'/plaidoyer/' + focus.uid" class="md-button md-white md-simple md-theme-default">
+                  <router-link
+                    :to="'/plaidoyer/' + focus.uid"
+                    class="md-button md-white md-simple md-theme-default"
+                  >
                     <div class="md-ripple">
                       <div class="md-button-content">
                         <i class="md-icon md-icon-font md-theme-default">watch_later</i>
@@ -98,14 +101,17 @@
                 </div>
               </div>
             </div>
-
+          </div>
+        </div>
+        <div class="container">
+          <div class="md-layout">
             <div
               v-for="highlight in highlights"
               v-bind:key="highlight.id"
               class="highlight md-layout-item md-size-50 md-small-size-100"
               style="display:flex"
             >
-              <router-link :to="'/plaidoyer/' + highlight.uid">
+              <router-link :to="'/plaidoyer/' + highlight.uid" style="display:flex">
                 <div
                   class="md-card md-card-background md-theme-default"
                   :style="highlightBackground(highlight)"
@@ -127,7 +133,10 @@
                         </div>
                       </div>
                     </router-link>
-                    <router-link :to="'/plaidoyer/' + highlight.uid" class="md-button md-white md-simple md-theme-default">
+                    <router-link
+                      :to="'/plaidoyer/' + highlight.uid"
+                      class="md-button md-white md-simple md-theme-default"
+                    >
                       <div class="md-ripple">
                         <div class="md-button-content">
                           <i class="md-icon md-icon-font md-theme-default">watch_later</i>
