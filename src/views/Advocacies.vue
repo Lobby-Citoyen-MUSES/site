@@ -153,6 +153,57 @@
             </div>
           </div>
         </div>
+
+        <div class="container">
+          <div class="md-layout">
+            <div
+              v-for="advocacy in advocacies"
+              v-bind:key="advocacy.id"
+              class="highlight md-layout-item md-size-50 md-small-size-100"
+              style="display:flex"
+            >
+              <router-link :to="'/plaidoyer/' + advocacy.uid" style="display:flex">
+                <div
+                  class="md-card md-card-background md-theme-default"
+                  :style="highlightBackground(advocacy)"
+                >
+                  <div class="md-card-content">
+                    <h6 class="card-category">{{ advocacy.category }}</h6>
+                    <h3 class="card-title">{{ advocacy.title }}</h3>
+                    <p class="card-description">{{ advocacy.summary }}</p>
+                  </div>
+
+                  <div class="md-card-actions">
+                    <router-link
+                      :to="'/plaidoyer/' + advocacy.uid"
+                      class="md-button md-white md-simple md-theme-default"
+                    >
+                      <div class="md-ripple">
+                        <div class="md-button-content">
+                          <i class="md-icon md-icon-font md-theme-default">subject</i> Lire le plaidoyer
+                        </div>
+                      </div>
+                    </router-link>
+                    <router-link
+                      :to="'/plaidoyer/' + advocacy.uid"
+                      class="md-button md-white md-simple md-theme-default"
+                    >
+                      <div class="md-ripple">
+                        <div class="md-button-content">
+                          <i class="md-icon md-icon-font md-theme-default">watch_later</i>
+                          {{ advocacy.reading_time }} min
+                          <span
+                            class="hidden-sm"
+                          >de lecture</span>
+                        </div>
+                      </div>
+                    </router-link>
+                  </div>
+                </div>
+              </router-link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -173,7 +224,7 @@ export default {
       editorial: null,
       focus: null,
       highlights: [],
-      articles: []
+      advocacies: []
     };
   },
   computed: {
@@ -271,7 +322,7 @@ export default {
             this.$prismic.Predicates.at("document.type", "article"),
             this.$prismic.Predicates.at("document.tags", ["en_avant"])
           ],
-          { pageSize: 3, orderings: "[document.first_publication_date desc]" }
+          { pageSize: 2, orderings: "[document.first_publication_date desc]" }
         )
         .then(response => {
           response.results.forEach(document => {
@@ -282,6 +333,26 @@ export default {
             });
           });
         });
+
+        // this.$prismic.client
+        // .query(
+        //   [
+        //     this.$prismic.Predicates.at("document.type", "article"),
+        //     this.$prismic.Predicates.not("document.tags", ["premiere"]),
+        //     this.$prismic.Predicates.not("document.tags", ["zoom"]),
+        //     this.$prismic.Predicates.not("document.tags", ["en_avant"])
+        //   ],
+        //   { pageSize: 10, orderings: "[document.first_publication_date desc]" }
+        // )
+        // .then(response => {
+        //   response.results.forEach(document => {
+        //     this.advocacies.push({
+        //       id: document.id,
+        //       uid: document.uid,
+        //       ...document.data
+        //     });
+        //   });
+        // });
     }
   },
   created() {
