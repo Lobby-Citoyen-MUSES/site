@@ -322,7 +322,7 @@ export default {
             this.$prismic.Predicates.at("document.type", "article"),
             this.$prismic.Predicates.at("document.tags", ["en_avant"])
           ],
-          { pageSize: 2, orderings: "[document.first_publication_date desc]" }
+          { pageSize: 10, orderings: "[document.first_publication_date desc]" }
         )
         .then(response => {
           response.results.forEach(document => {
