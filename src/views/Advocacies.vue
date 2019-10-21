@@ -109,7 +109,6 @@
               v-for="highlight in highlights"
               v-bind:key="highlight.id"
               class="highlight md-layout-item md-size-50 md-small-size-100"
-              style="display:flex"
             >
               <router-link :to="'/plaidoyer/' + highlight.uid" style="display:flex">
                 <div
@@ -369,5 +368,15 @@ export default {
 .card-category {
   color: #eb0060;
   text-shadow: black 0px 0px 3px;
+}
+
+.highlight {
+    display: flex;
+  }
+
+@media (max-width: 960px) {
+  .highlight {
+    display: block;
+  }
 }
 </style>
