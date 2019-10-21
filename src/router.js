@@ -6,8 +6,10 @@ import About from "./views/About.vue";
 import Board from "./views/Board.vue";
 import Committee from "./views/Committee.vue";
 import Member from "./views/Member.vue";
+import Category from "./views/Category.vue";
 import Advocacies from "./views/Advocacies.vue";
 import Advocacy from "./views/Advocacy.vue";
+import Editorials from "./views/Editorials.vue";
 import Editorial from "./views/Editorial.vue";
 import PledgeCitizen from "./views/PledgeCitizen.vue";
 import PledgeBusiness from "./views/PledgeBusiness.vue";
@@ -87,10 +89,28 @@ const router = new Router({
       }
     },
     {
+      path: "/plaidoyers/:category",
+      name: "category",
+      components: { default: Category, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 50 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/plaidoyer/:uid",
       name: "advocacy",
       components: { default: Advocacy, header: MainNavbar, footer: MainFooter },
       meta: { requiresAuth: true },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/editoriaux",
+      name: "editorials",
+      components: { default: Editorials, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100, background: "gradient" },
         footer: { backgroundColor: "black" }

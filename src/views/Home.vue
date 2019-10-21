@@ -257,15 +257,14 @@
               Votre soutien est indispensable à notre combat pour une plus grande justice sociale, économique et environnementale.
             </p>
 
-            <a
-              href="/engagement/citoyen"
+            <router-link :to="'/engagement/citoyen'"
               class="md-button md-white md-round md-theme-default"
               style="font-size: .8em; font-variant: small-caps; display: inline-block; margin: 30px auto;"
             >
               <div class="md-ripple">
                 <div class="md-button-content">Agissons ensemble</div>
               </div>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>

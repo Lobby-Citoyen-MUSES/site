@@ -153,53 +153,53 @@
           </div>
         </div>
 
-        <div class="container">
-          <div class="md-layout">
-            <div
-              v-for="advocacy in advocacies"
-              v-bind:key="advocacy.id"
-              class="highlight md-layout-item md-size-50 md-small-size-100"
-              style="display:flex"
-            >
-              <router-link :to="'/plaidoyer/' + advocacy.uid" style="display:flex">
-                <div
-                  class="md-card md-card-background md-theme-default"
-                  :style="highlightBackground(advocacy)"
-                >
-                  <div class="md-card-content">
-                    <h6 class="card-category">{{ advocacy.category }}</h6>
-                    <h3 class="card-title">{{ advocacy.title }}</h3>
-                    <p class="card-description">{{ advocacy.summary }}</p>
-                  </div>
 
-                  <div class="md-card-actions">
-                    <router-link
-                      :to="'/plaidoyer/' + advocacy.uid"
-                      class="md-button md-white md-simple md-theme-default"
-                    >
-                      <div class="md-ripple">
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default">subject</i> Lire le plaidoyer
-                        </div>
-                      </div>
-                    </router-link>
-                    <router-link
-                      :to="'/plaidoyer/' + advocacy.uid"
-                      class="md-button md-white md-simple md-theme-default"
-                    >
-                      <div class="md-ripple">
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default">watch_later</i>
-                          {{ advocacy.reading_time }} min
-                          <span
-                            class="hidden-sm"
-                          >de lecture</span>
-                        </div>
-                      </div>
-                    </router-link>
-                  </div>
-                </div>
-              </router-link>
+        
+      </div>
+
+      <div class="section section-dark text-center">
+        <div class="container readable">
+          <p>
+            En décryptant des problématiques d’actualité, nos plaidoyers visent à présenter une analyse et délivrer des clés de compréhension afin de nourrir la réflexion collective. Il s’agit, en s’appuyant sur des chiffres et des illustrations, de construire des propositions tout à la fois ambitieuses et réalistes. Instrument clé pour porter une voix dans le débat public et peser auprès des décideurs. 
+          </p>
+          <h3 style="text-align:center">
+            Nos plaidoyers ont pour prisme unique la défense passionnée de l’intérêt commun au service d’un modèle résolument plus juste et plus soutenable.
+          </h3>
+          <div class="md-layout md-alignment-top-center">
+          <div class="md-layout-item md-size-50 md-small-size-100">
+            <router-link 
+              v-for="(category, link) in categories[0]"
+              v-bind:key="category"
+              :to="'/plaidoyers/' + link"
+              class="md-button md-white md-round md-theme-default"
+              style="font-size: .8em; font-variant: small-caps; display:block; margin: 20px auto"
+            >
+              <div class="md-ripple">
+                <div class="md-button-content" style="color: rgb(168, 8, 65) !important">{{ category }}</div>
+              </div>
+            </router-link>
+          </div>
+           <div class="md-layout-item md-size-50 md-small-size-100">
+            <router-link 
+              v-for="(category, link) in categories[1]"
+              v-bind:key="category"
+              :to="'/plaidoyers/' + link"
+              class="md-button md-white md-round md-theme-default"
+              style="font-size: .8em; font-variant: small-caps; display:block; margin: 20px auto"
+            >
+              <div class="md-ripple">
+                <div class="md-button-content" style="color: rgb(168, 8, 65) !important">{{ category }}</div>
+              </div>
+            </router-link>
+             <router-link 
+              :to="'/editoriaux'"
+              class="md-button md-white md-round md-theme-default"
+              style="font-size: .8em; font-variant: small-caps; display:block; margin: 20px auto"
+            >
+              <div class="md-ripple">
+                <div class="md-button-content" style="color: rgb(168, 8, 65) !important">éditoriaux</div>
+              </div>
+            </router-link>
             </div>
           </div>
         </div>
@@ -223,7 +223,17 @@ export default {
       editorial: null,
       focus: null,
       highlights: [],
-      advocacies: []
+      advocacies: [],
+      categories: [{
+        "Modèle d'organisation de la société": "organisation de la société",
+        "Modèle d'organisation du travail": "organisation du travail",
+        "Modèle de développement durable": "développement durable",
+        "Modèle économique & technologique": "économie & technologie",
+      },{
+        "Modèle de gouvernance européenne et internationale": "gouvernance internationale",
+        "Modèle de justice sociale": "justice sociale",
+        "Modèle social": "social",
+      }]
     };
   },
   computed: {
@@ -333,25 +343,25 @@ export default {
           });
         });
 
-        // this.$prismic.client
-        // .query(
-        //   [
-        //     this.$prismic.Predicates.at("document.type", "article"),
-        //     this.$prismic.Predicates.not("document.tags", ["premiere"]),
-        //     this.$prismic.Predicates.not("document.tags", ["zoom"]),
-        //     this.$prismic.Predicates.not("document.tags", ["en_avant"])
-        //   ],
-        //   { pageSize: 10, orderings: "[document.first_publication_date desc]" }
-        // )
-        // .then(response => {
-        //   response.results.forEach(document => {
-        //     this.advocacies.push({
-        //       id: document.id,
-        //       uid: document.uid,
-        //       ...document.data
-        //     });
-        //   });
-        // });
+        this.$prismic.client
+        .query(
+          [
+            this.$prismic.Predicates.at("document.type", "article"),
+            this.$prismic.Predicates.not("document.tags", ["premiere"]),
+            this.$prismic.Predicates.not("document.tags", ["zoom"]),
+            this.$prismic.Predicates.not("document.tags", ["en_avant"])
+          ],
+          { pageSize: 10, orderings: "[document.first_publication_date desc]" }
+        )
+        .then(response => {
+          response.results.forEach(document => {
+            this.advocacies.push({
+              id: document.id,
+              uid: document.uid,
+              ...document.data
+            });
+          });
+        });
     }
   },
   created() {
@@ -365,6 +375,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.section-dark {
+  color: #fff;
+  background: linear-gradient(30deg,#53132d 10%,#c5005c);
+}
+
 .card-category {
   color: #eb0060;
   text-shadow: black 0px 0px 3px;
@@ -372,11 +387,17 @@ export default {
 
 .highlight {
     display: flex;
+    a {
+      display: flex;
+    }
   }
 
 @media (max-width: 960px) {
   .highlight {
     display: block;
+    a {
+      display: block;
+    }
   }
 }
 </style>
