@@ -8,7 +8,7 @@
             class="md-layout-item md-large-size-100"
             style="padding-top:40px"
           >
-            <h1 style="font-size:36px;font-weight:300;text-align:justify">
+            <h1 style="font-size:36px;font-weight:300;">
                 {{ category }}
             </h1>
           </div>
