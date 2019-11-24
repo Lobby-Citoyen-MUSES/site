@@ -116,7 +116,7 @@ export default {
               "membre_comite_scientifique"
             ])
           ],
-          { orderings: "[my.person.lastname]" }
+          { pageSize: 100 ,orderings: "[my.person.lastname]" }
         )
         .then(response => {
           response.results.forEach(document => {
