@@ -19,6 +19,7 @@ import Donation from "./views/Donation.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Legal from "./views/Legal.vue";
+import Signin from "./views/Signin.vue";
 
 Vue.use(Router);
 
@@ -174,6 +175,15 @@ const router = new Router({
       path: "/mentions-legales",
       name: "legal",
       components: { default: Legal, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/connexion",
+      name: "signin",
+      components: { default: Signin, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100, background: "gradient" },
         footer: { backgroundColor: "black" }

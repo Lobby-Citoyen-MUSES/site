@@ -1,9 +1,8 @@
 {
-  "name": "vue-material-kit",
-  "author": "Creative Tim https://www.creative-tim.com/",
-  "description": "Vue Material Kit",
-  "version": "1.2.0",
-  "private": true,
+  "name": "muses-website",
+  "author": "Ludovic FLEURY",
+  "description": "Site web du Lobby citoyen MUSES",
+  "version": "1.0.0",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
@@ -28,7 +27,7 @@
     "@vue/cli-plugin-eslint": "3.9.2",
     "@vue/cli-service": "3.9.3",
     "@vue/eslint-config-prettier": "4.0.1",
-    "node-sass": "4.12.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "7.1.0",
     "vue-template-compiler": "2.6.10"
   }
