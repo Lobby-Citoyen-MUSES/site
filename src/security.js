@@ -1,5 +1,5 @@
 export default {
-    jwt: null,
+    jwt: localStorage.getItem('jwt') || null,
     authenticate(jwt) {
         localStorage.jwt = jwt;
         this.jwt = jwt;

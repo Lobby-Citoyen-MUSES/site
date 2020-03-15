@@ -20,6 +20,11 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Legal from "./views/Legal.vue";
 import Signin from "./views/Signin.vue";
+import Signup from "./views/Signup.vue";
+import Adherent from "./views/Adherent.vue";
+import Domicile from "./views/Domicile.vue";
+import TaxReceipt from "./views/TaxReceipt.vue";
+import Security from './security.js';
 
 Vue.use(Router);
 
@@ -181,24 +186,81 @@ const router = new Router({
       }
     },
     {
+      path: "/inscription",
+      name: "signup",
+      components: { default: Signup, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      },
+    },
+    {
       path: "/connexion",
       name: "signin",
       components: { default: Signin, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100, background: "gradient" },
         footer: { backgroundColor: "black" }
+      },
+    },
+    {
+      path: "/adherent",
+      name: "adherent",
+      components: { default: Adherent, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      },
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: "/adherent/domiciliation-fiscale",
+      name: "domiciliation",
+      components: { default: Domicile, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      },
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: "/adherent/recu-fiscal",
+      name: "recu-fiscal",
+      components: { default: TaxReceipt, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      },
+      meta: {
+        auth: true
       }
     },
 
   ],
-  scrollBehavior: to => {
+  scrollBehavior(to) {
     if (to.hash) {
       return { selector: to.hash };
     } else {
       return { x: 0, y: 0 };
     }
-  },
+  }
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.hasOwnProperty('auth'))) {
+    if (Security.jwt === null) {
+      next('/connexion');
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+})
 
 
 export default router;

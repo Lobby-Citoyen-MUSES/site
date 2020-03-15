@@ -1,16 +1,12 @@
 <template>
 <div class="wrapper board">
-    <div class="section page-header mt-6 header-filter">
+    <div class="section page-header header-filter">
       <div class="container">
         <div class="md-layout md-alignment-center">
-          <div
-            class="md-layout-item md-large-size-80 md-medium-size-80 md-small-size-100 richtext"
-          >
           <h1
                 class="title text-center"
                 style="font-variant:small-caps; font-size:40px; padding-bottom: 0"
-              >Statuts & Mentions légales</h1>
-          </div>
+              >Connexion à votre espace adhérent</h1>
         </div>
       </div>
     </div>
@@ -19,12 +15,15 @@
       <div class="section">
         <div class="container">
             <div>
+                <div v-if="this.$route.query.invitation" >
+                    toto
+                </div>
             <form @submit.prevent="signin">
                 <h1>Sign in</h1>
                 <label>Email</label>
-                <input required v-model="username" type="email" placeholder="Email"/>
+                <input required v-model="username" type="email" placeholder="votre@adresse.email"/><br/>
                 <label>Mot de passe</label>
-                <input required v-model="password" type="password" placeholder="Mot de passe"/>
+                <input required v-model="password" type="password" placeholder="*******"/>
                 <hr/>
                 <button type="submit">Se connecter</button>
             </form>
@@ -44,7 +43,7 @@ export default {
     data () {
         return {
             username: null,
-            password: null, 
+            password: null,
         }
     },
     computed: {
@@ -52,7 +51,7 @@ export default {
     methods: {    
         signin() {
             var request = new XMLHttpRequest();
-            request.open("POST", "https://ooq2tndh90.execute-api.eu-west-3.amazonaws.com/preprod/auth");
+            request.open("POST", process.env.VUE_APP_MUSES_API_HOST + "/auth");
             request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             request.onload = function(event) {
                 const response = event.target;
@@ -60,7 +59,13 @@ export default {
                     case (200):
                         const auth = JSON.parse(response.responseText);
                         security.authenticate(auth.access_token);
+                        this.$router.push('adherent')
                     break;
+                    case (403):
+                    case (401):
+
+                    break;  
+                    default:
                 }
             }.bind(this)
 
