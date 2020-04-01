@@ -150,9 +150,9 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
-    // if (!to.query.hasOwnProperty("invitation")) {
-    //   next("/");
-    // }
+    if (!to.query.hasOwnProperty("invitation")) {
+      next("/");
+    }
 
     next();
   }
