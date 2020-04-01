@@ -251,7 +251,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.hasOwnProperty('auth'))) {
+  if (to.matched.some(record => record.meta.hasOwnProperty('auth') && record.meta.auth === true)) {
     if (Security.jwt === null) {
       next('/connexion');
     } else {

@@ -108,14 +108,9 @@ export default {
         "application/json;charset=UTF-8"
       );
 
-
-      request.onreadystatechange = function (oEvent) {  
-        if (request.readyState === 4) {  
-          if (request.status !== 200) {  
-            this.error = true
-          }
-        }
-      };
+      request.onerror = function(event) {
+        this.error = true;
+      }.bind(this)
 
       request.onload = function(event) {
         const response = event.target;

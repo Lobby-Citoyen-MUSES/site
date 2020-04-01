@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div v-if="this.$route.query.invitation" id="notifications">
+    <div v-if="this.$route.query.invitation">
       <div class="alert alert-info">
         <div class="container">
           <button
@@ -34,6 +34,25 @@
             <md-icon>info_outline</md-icon>
           </div>
           <b>Votre compte est activé</b> : veuillez vous connecter
+        </div>
+      </div>
+    </div>
+
+    <div v-if="error">
+      <div class="alert alert-danger">
+        <div class="container">
+          <button
+            type="button"
+            aria-hidden="true"
+            class="close"
+            @click="event => removeNotify(event,'alert-danger')"
+          >
+            <md-icon>clear</md-icon>
+          </button>
+          <div class="alert-icon">
+            <md-icon>warning</md-icon>
+          </div>
+          <b>Erreur</b> : l'email ou le mot de passe est invalide
         </div>
       </div>
     </div>
@@ -73,6 +92,7 @@ export default {
   name: "signin",
   data() {
     return {
+      error: null,
       username: null,
       password: null
     };
@@ -80,6 +100,7 @@ export default {
   computed: {},
   methods: {
     signin() {
+      this.error = null;
       var request = new XMLHttpRequest();
       request.open("POST", process.env.VUE_APP_MUSES_API_HOST + "/auth");
       request.setRequestHeader(
@@ -96,8 +117,10 @@ export default {
             break;
           case 403:
           case 401:
+            this.error = "l'email ou le mot de passe est invalide";
             break;
           default:
+            this.error = "Une erreur est survenue, merci de réessayer ou de nous contacter";
         }
       }.bind(this);
 
@@ -114,6 +137,7 @@ export default {
       while (target.className.indexOf(notifyClass) === -1) {
         target = target.parentNode;
       }
+      this.error = null;
       return target.parentNode.removeChild(target);
     }
   }
