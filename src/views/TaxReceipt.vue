@@ -15,6 +15,10 @@
             <h1>Reçu fiscal pour don<br/> (Article 200 du Code général des Impôts)</h1>
             <div v-if="receipt">
               <p>
+                Reçu numéro: {{receipt.id}}
+              </p>
+
+              <p>
                 Lobby Citoyen MUSES (Pour un Modèle Universel Social Emancipateur et Solidaire)<br/>
                 65 rue du chemin vert<br/>
                 75011 Paris<br/>
@@ -39,6 +43,12 @@
                 <span  v-for="(donation, index) in receipt.donations" v-bind:key="index">
                 Le {{donation.date.getDate()}} {{new Intl.DateTimeFormat('fr-FR', {month: 'long'}).format(donation.date)}} {{donation.date.getFullYear()}}, ***{{ donation.amount }} €***, en virement bancaire<br/>
                 </span>
+              </p>
+
+              <p>
+                Paris, le 1 janvier 2020
+                Ludovic FLEURY
+                Trésorier
               </p>
             </div>
           </div>

@@ -1,76 +1,133 @@
 <template>
-<div class="wrapper board">
-    <div class="section page-header header-filter">
+  <div class="wrapper board">
+    <div
+      class="section page-header header-filter"
+      style="background-color: rgb(220, 220, 220); height: unset;"
+    >
       <div class="container">
         <div class="md-layout md-alignment-center">
-          <h1
-                class="title text-center"
-                style="font-variant:small-caps; font-size:40px; padding-bottom: 0"
-              >Connexion à votre espace adhérent</h1>
+          <div
+            class="md-layout-item md-large-size-80 md-medium-size-80 md-small-size-100 richtext"
+            style="padding-top:80px"
+          >
+            <h1
+              class="title text-center"
+              style="font-variant:small-caps; font-size:40px; padding-bottom: 0; padding-top:0"
+            >Connexion à votre espace adhérent</h1>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="main readability">
-      <div class="section">
+    <div v-if="this.$route.query.invitation" id="notifications">
+      <div class="alert alert-info">
         <div class="container">
-            <div>
-                <div v-if="this.$route.query.invitation" >
-                    toto
-                </div>
-            <form @submit.prevent="signin">
-                <h1>Sign in</h1>
-                <label>Email</label>
-                <input required v-model="username" type="email" placeholder="votre@adresse.email"/><br/>
-                <label>Mot de passe</label>
-                <input required v-model="password" type="password" placeholder="*******"/>
-                <hr/>
-                <button type="submit">Se connecter</button>
-            </form>
-            </div>
+          <button
+            type="button"
+            aria-hidden="true"
+            class="close"
+            @click="event => removeNotify(event,'alert-info')"
+          >
+            <md-icon>clear</md-icon>
+          </button>
+          <div class="alert-icon">
+            <md-icon>info_outline</md-icon>
+          </div>
+          <b>Votre compte est activé</b> : veuillez vous connecter
         </div>
       </div>
     </div>
-</div>
+
+    <div class="main readability" style="height:50vh">
+      <div class="section">
+        <div class="container">
+          <div class="md-layout md-alignment-center">
+            <form
+              @submit.prevent="signin"
+              class="md-layout-item md-large-size-40 md-small-size-100"
+            >
+              <md-field>
+                <label>Adresse email</label>
+                <md-input required v-model="username" type="email" />
+              </md-field>
+
+              <md-field>
+                <label>Mot de passe</label>
+                <md-input required v-model="password" type="password" />
+              </md-field>
+
+              <md-button class="md-primary" style="float:right" type="submit">Se connecter</md-button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 
 <script>
-import security from '../security';
+import security from "../security";
 
 export default {
-    name: 'signin',
-    data () {
-        return {
-            username: null,
-            password: null,
+  name: "signin",
+  data() {
+    return {
+      username: null,
+      password: null
+    };
+  },
+  computed: {},
+  methods: {
+    signin() {
+      var request = new XMLHttpRequest();
+      request.open("POST", process.env.VUE_APP_MUSES_API_HOST + "/auth");
+      request.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      request.onload = function(event) {
+        const response = event.target;
+        switch (response.status) {
+          case 200:
+            const auth = JSON.parse(response.responseText);
+            security.authenticate(auth.access_token);
+            this.$router.push("adherent");
+            break;
+          case 403:
+          case 401:
+            break;
+          default:
         }
-    },
-    computed: {
-    },
-    methods: {    
-        signin() {
-            var request = new XMLHttpRequest();
-            request.open("POST", process.env.VUE_APP_MUSES_API_HOST + "/auth");
-            request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            request.onload = function(event) {
-                const response = event.target;
-                switch (response.status) {
-                    case (200):
-                        const auth = JSON.parse(response.responseText);
-                        security.authenticate(auth.access_token);
-                        this.$router.push('adherent')
-                    break;
-                    case (403):
-                    case (401):
+      }.bind(this);
 
-                    break;  
-                    default:
-                }
-            }.bind(this)
+      request.send(
+        "grant_type=password&username=" +
+          encodeURIComponent(this.username) +
+          "&password=" +
+          encodeURIComponent(this.password)
+      );
+    },
 
-            request.send('grant_type=password&username=' + encodeURIComponent(this.username) + '&password=' + encodeURIComponent(this.password));
-        }
+    removeNotify(e, notifyClass) {
+      var target = e.target;
+      while (target.className.indexOf(notifyClass) === -1) {
+        target = target.parentNode;
+      }
+      return target.parentNode.removeChild(target);
     }
-}
+  }
+};
 </script>
+
+<style lang="scss">
+.alert {
+  box-shadow: 0 none;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.alert.alert-info {
+  border-radius: 0;
+}
+</style>
