@@ -101,7 +101,7 @@ export default {
         "Content-type",
         "application/json;charset=UTF-8"
       );
-      request.setRequestHeader("Authorization", "Bearer 1234567890" + Security.jwt);
+      request.setRequestHeader("Authorization", "Bearer " + Security.jwt);
 
       request.onerror = function(event) {
         this.error = true;
