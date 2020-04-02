@@ -33,7 +33,7 @@
           <div class="alert-icon">
             <md-icon>warning</md-icon>
           </div>
-          <b>Une erreur est survenue</b> : veuillez réessayer ou nous contacter à <a href="mailto:contact@muses-lobby-citoyen.org" style="color:#FFF !important; text-decoration: underline">contact@muse-lobby-citoyen.org</a>
+          <b>Une erreur est survenue</b> : veuillez réessayer ou nous contacter à <a href="mailto:contact@muses-lobby-citoyen.org" style="color:#FFF !important; text-decoration: underline">contact@muses-lobby-citoyen.org</a>
         </div>
       </div>
     </div>
