@@ -131,7 +131,20 @@
                 </a>
               </li>
 
-              
+              <li class="md-list-item">
+                <router-link to="/adherent" class="md-list-item-router md-list-item-container md-button-clean">
+                  <div class="md-list-item-content">
+                      <md-button
+                        slot="title"
+                        class="md-button md-button-link md-white md-simple"
+                        data-toggle="dropdown"
+                      >
+                        <i class="material-icons">person</i>
+                        <p>Adhérent</p>
+                      </md-button>
+                  </div>
+                </router-link>
+              </li>
 
               <md-list-item
                 href="https://twitter.com/MusesCitoyen"
