@@ -3,5 +3,10 @@ export default {
     authenticate(jwt) {
         localStorage.jwt = jwt;
         this.jwt = jwt;
+    },
+    empty() {
+        localStorage.jwt = null;
+        localStorage.removeItem("jwt");
+        this.jwt = null;
     }
 }
