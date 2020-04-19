@@ -14,7 +14,7 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
       security.empty();
-      next('/');
+      next('/connexion');
   },
 };
 </script>

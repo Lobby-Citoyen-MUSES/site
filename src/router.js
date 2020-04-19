@@ -19,6 +19,7 @@ import Donation from "./views/Donation.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Legal from "./views/Legal.vue";
+import Signin from "./views/Signout.vue";
 import Signin from "./views/Signin.vue";
 import Signup from "./views/Signup.vue";
 import Adherent from "./views/Adherent.vue";
@@ -198,6 +199,15 @@ const router = new Router({
       path: "/connexion",
       name: "signin",
       components: { default: Signin, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 100, background: "gradient" },
+        footer: { backgroundColor: "black" }
+      },
+    },
+    {
+      path: "/deconnexion",
+      name: "Signout",
+      components: { default: Signout, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100, background: "gradient" },
         footer: { backgroundColor: "black" }
